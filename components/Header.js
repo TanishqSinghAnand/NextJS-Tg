@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
 import mbLogo from "../assets/mobile_logo.png";
-import largeLogo from "../Assets/large_logo.webp";
+import largeLogo from "../assets/large_logo.webp";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";

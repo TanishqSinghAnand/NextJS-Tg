@@ -1,6 +1,6 @@
 import { getProviders, signIn } from "next-auth/react";
 import Header from "../../components/Header";
-import logo from "../../Assets/large_logo.webp";
+import logo from "../../assets/large_logo.webp";
 function signin({ providers }) {
   return (
     <>
