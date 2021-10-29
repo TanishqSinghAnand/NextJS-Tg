@@ -13,6 +13,8 @@ import {
 } from "@firebase/firestore";
 import { useSession } from "next-auth/react";
 import { ref, getDownloadURL, uploadString } from "@firebase/storage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Modal() {
   const [open, setOpen] = useRecoilState(modalState);
@@ -34,8 +36,8 @@ function Modal() {
 
     const docRef = await addDoc(collection(db, "posts"), {
       username: session.user.usernameID,
-      name:session.user.name,
-      usernameWithoutID : session.user.username,
+      name: session.user.name,
+      usernameWithoutID: session.user.username,
       caption: captionRef.current.value,
       profileImg: session.user.image,
       timestamp: serverTimestamp(),
@@ -66,7 +68,22 @@ function Modal() {
       reader.readAsDataURL(e.target.files[0]);
     }
     reader.onload = (readerEvent) => {
-      setSelectedFile(readerEvent.target.result);
+      if (readerEvent.target.result.includes("image")) {
+        setSelectedFile(readerEvent.target.result);
+      }
+      else{
+        toast.error("Only Images allowed !!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        return;
+      }
+      
     };
   };
 
