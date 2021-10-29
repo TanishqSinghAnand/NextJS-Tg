@@ -8,7 +8,7 @@ export default function Home() {
     <div className="h-screen overflow-y-scroll scrollbar-hide">
       <Head>
         <title>Tinstagram</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="./TT.png" />
       </Head>
 
       {/* Header */}
